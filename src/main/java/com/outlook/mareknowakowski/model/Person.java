@@ -2,19 +2,15 @@ package com.outlook.mareknowakowski.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NodeEntity
-@EqualsAndHashCode
-@ToString
 public class Person {
 
     private String name;
@@ -74,8 +70,4 @@ public class Person {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 }

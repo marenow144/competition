@@ -1,16 +1,11 @@
 package com.outlook.mareknowakowski.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import org.neo4j.ogm.annotation.*;
-
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RelationshipEntity(type = "PLACED")
-@EqualsAndHashCode
-@ToString
 public class Result {
     @Id
     @GeneratedValue

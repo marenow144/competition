@@ -13,9 +13,6 @@ public interface CompetitionRepository extends Neo4jRepository<Competition, Long
 
     Collection<Competition> findByNameLike(@Param("name") String name);
 
-
-    //Set<Person> findByPersonName(String name);
-
     @Query("MATCH (c:Competition)<-[r:PLACED]-(a:Person) RETURN m,r,a LIMIT {limmit}")
     Collection<Competition> graph(@Param("limit") Integer limit);
 
