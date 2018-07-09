@@ -1,7 +1,9 @@
-package com.example.zawody.model;
+package com.outlook.mareknowakowski.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -9,13 +11,13 @@ import org.neo4j.ogm.annotation.Relationship;
 
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @NodeEntity
+@EqualsAndHashCode
+@ToString
 public class Person {
 
     private String name;
-   // private final String surname;
     private Integer birthYear;
     private String club;
     @Relationship(type = "PLACED")
@@ -24,17 +26,21 @@ public class Person {
     @GeneratedValue
     private Long id;
     @JsonProperty
-    Competition competition;
-    protected Person() {};
+    private Competition competition;
 
-    public Person(final String name,final Integer birthYear,final String club) {
+    public Person() {
+    }
+
+    ;
+
+    public Person(final String name, final Integer birthYear, final String club) {
         this.name = name;
         this.birthYear = birthYear;
         this.club = club;
     }
 
     public Person(@JsonProperty final String name, @JsonProperty final Integer birthYear,
-                  @JsonProperty final String club, @JsonProperty  Competition competition) {
+                  @JsonProperty final String club, @JsonProperty Competition competition) {
         this.name = name;
         //this.surname = surname;
         this.birthYear = birthYear;
@@ -67,12 +73,9 @@ public class Person {
     public Long getId() {
         return id;
     }
-//    public String toString() {
-//
-//        return this.name + "'s teammates => "
-//                + Optional.ofNullable(this.teammates).orElse(
-//                Collections.emptySet()).stream()
-//                .map(Person::getName)
-//                .collect(Collectors.toList());
-//    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

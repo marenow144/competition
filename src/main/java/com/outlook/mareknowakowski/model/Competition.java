@@ -1,33 +1,37 @@
-package com.example.zawody.model;
+package com.outlook.mareknowakowski.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import static org.neo4j.driver.internal.messaging.PackStreamMessageFormatV1.RELATIONSHIP;
 
 @NodeEntity
+@EqualsAndHashCode
+@ToString
 public class Competition {
 
     private String name;
     private String date;
 
-    @Relationship(type = "PLACED",direction = Relationship.INCOMING)
+    @Relationship(type = "PLACED", direction = Relationship.INCOMING)
     private List<Result> results = new ArrayList<>();
 
     @Id
     @GeneratedValue
     private Long id;
-    public Competition() {};
 
-    public Competition(@JsonProperty  String name,@JsonProperty String date) {
+    public Competition() {
+    }
+
+    ;
+
+    public Competition(@JsonProperty final String name, @JsonProperty final String date) {
         this.name = name;
         this.date = date;
     }
@@ -35,8 +39,6 @@ public class Competition {
     public void addResult(Result result) {
         this.results.add(result);
     }
-
-
 
 
 }

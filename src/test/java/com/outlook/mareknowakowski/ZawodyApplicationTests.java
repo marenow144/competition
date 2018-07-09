@@ -1,4 +1,4 @@
-package com.example.zawody;
+package com.outlook.mareknowakowski;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

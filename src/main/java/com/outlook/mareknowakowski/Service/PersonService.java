@@ -1,7 +1,7 @@
-package com.example.zawody.Service;
+package com.outlook.mareknowakowski.Service;
 
-import com.example.zawody.model.Person;
-import com.example.zawody.repositories.PersonRepository;
+import com.outlook.mareknowakowski.model.Person;
+import com.outlook.mareknowakowski.repositories.PersonRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Scanner;
