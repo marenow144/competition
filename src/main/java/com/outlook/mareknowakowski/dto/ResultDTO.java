@@ -11,6 +11,8 @@
  */
 package com.outlook.mareknowakowski.dto;
 
+import com.outlook.mareknowakowski.model.Club;
+
 public class ResultDTO
 {
 	private String name;
@@ -18,9 +20,13 @@ public class ResultDTO
 	private String club;
 	private CompetitionDTO competition;
 	private Integer place;
-
+	private String category;
 
 	private ResultDTO(){}
+
+	public String getCategory() {
+		return category;
+	}
 
 	public String getName()
 	{
@@ -42,7 +48,7 @@ public class ResultDTO
 		this.birthYear = birthYear;
 	}
 
-	public String getClub()
+	public String  getClub()
 	{
 		return club;
 	}
@@ -65,6 +71,10 @@ public class ResultDTO
 	public Integer getPlace()
 	{
 		return place;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public void setPlace(final Integer place)

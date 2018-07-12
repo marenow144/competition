@@ -9,14 +9,16 @@ import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @NodeEntity
 public class Person {
 
     private String name;
     private Integer birthYear;
-    private String club;
-    @Relationship(type = "PLACED")
+    @Relationship(type = "BELONGS_TO")
+    private Club club;
+    @Relationship(type = "STARTED_IN")
     private List<Competition> competitionList = new ArrayList<>();
     @Id
     @GeneratedValue
@@ -29,14 +31,14 @@ public class Person {
 
     ;
 
-    public Person(final String name, final Integer birthYear, final String club) {
+    public Person(final String name, final Integer birthYear, final Club club) {
         this.name = name;
         this.birthYear = birthYear;
         this.club = club;
     }
 
     public Person(@JsonProperty final String name, @JsonProperty final Integer birthYear,
-                  @JsonProperty final String club, @JsonProperty Competition competition) {
+                  @JsonProperty final Club club, @JsonProperty Competition competition) {
         this.name = name;
         //this.surname = surname;
         this.birthYear = birthYear;
@@ -58,7 +60,7 @@ public class Person {
         return birthYear;
     }
 
-    public String getClub() {
+    public Club getClub() {
         return club;
     }
 
@@ -70,4 +72,34 @@ public class Person {
         return id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(name, person.name) &&
+                Objects.equals(birthYear, person.birthYear) &&
+                Objects.equals(club, person.club) &&
+                Objects.equals(competitionList, person.competitionList) &&
+                Objects.equals(id, person.id) &&
+                Objects.equals(competition, person.competition);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name, birthYear, club, competitionList, id, competition);
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", birthYear=" + birthYear +
+                ", club='" + club + '\'' +
+                ", competitionList=" + competitionList +
+                ", id=" + id +
+                ", competition=" + competition +
+                '}';
+    }
 }

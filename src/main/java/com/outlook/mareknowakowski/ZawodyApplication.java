@@ -1,6 +1,7 @@
 package com.outlook.mareknowakowski;
 
 
+import com.outlook.mareknowakowski.model.Club;
 import com.outlook.mareknowakowski.model.Competition;
 import com.outlook.mareknowakowski.model.Person;
 import com.outlook.mareknowakowski.model.Result;
@@ -30,8 +31,8 @@ public class ZawodyApplication {
             Competition competition1 = new Competition("zawody2", "15.10.2000");
 
 
-            Person greg = new Person("Greg", 2014, "dartmoor", competition);
-            Person bob = new Person("bob", 1002, "mercedes", competition1);
+            Person greg = new Person("Greg", 2014, new Club("dartmoor"), competition);
+            Person bob = new Person("bob", 1002, new Club("mercedes"), competition1);
             greg.getCompetitionList().clear();
             bob.getCompetitionList().clear();
             personRepository.save(greg);
@@ -44,11 +45,11 @@ public class ZawodyApplication {
 
             Result result1 = new Result(greg, competition);
             Result result2 = new Result(greg, competition1);
-            result2.addResult(3);
-            result1.addResult(1);
+            //result2.addResult(new Result(3,"elo"));
+            //result1.addResult();
 
             Result result = new Result(bob, competition);
-            result.addResult(2);
+            //.addResult(2);
             competition.addResult(result1);
             competition1.addResult(result2);
 
